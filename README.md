@@ -29,3 +29,29 @@ Because I don't know Rust and I felt this might be a good chance to learn the la
 
 ## Coffeebean????
 I <s>like</s> love coffee ♥
+
+---
+
+# Usage
+1. To begin with, you must have a `*.cb` file (actually, any plaintext file will do, but the extension makes it look awesome, for the time being). Write a C-like return statement:  
+    ```c
+    return 20;
+    ```
+2. Pass this file as an argument.  
+    ```sh
+    cargo run <file.cb>
+    ```
+3. It will create an `out.asm` file. In order to create the binary, run this command (you might need to install `nasm` and `ld` packages first):  
+   ```sh
+   nasm -felf64 out.asm && ld out.o -o out
+   ```
+4. Now run the binary  
+   ```sh
+   ./out
+   ```
+5. It won't print anything as it calls only the `exit` syscall with a return value (20 in this case). To check the return value, run:  
+   ```sh
+   echo $?
+   ```
+   It should print 20.
+
